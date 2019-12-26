@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ScrollView, StyleSheet, View, Text, Image} from 'react-native';
+import {ScrollView, StyleSheet, View, Text, Image, FlatList} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 class MarketDetailHeader extends Component {
@@ -59,7 +59,45 @@ export default function LinksScreen() {
       <MarketDetailHeader/>
       <MarketDetailDescription/>
       <Text style={{fontSize: 20, margin: 10}}>Participant Seller <Text style={{color: 'blue'}}>join</Text></Text>
-      <MarketDetailParticipantSeller/>
+      <FlatList
+          data={[
+            {
+              key: 'Devin',
+              marketName: "test"
+            },              {
+              key: 'Devin1',
+              marketName: "test"
+            },              {
+              key: 'Devin2',
+              marketName: "test"
+            },              {
+              key: 'Dev3in',
+              marketName: "test"
+            },
+            {
+              key: 'Dev4in',
+              marketName: "test"
+            },
+            {
+              key: 'De5vin',
+              marketName: "test"
+            },
+            {
+              key: 'Dev6in',
+              marketName: "test"
+            },
+            {
+              key: 'Dev7in',
+              marketName: "test"
+            },
+            {
+              key: 'Dev2in',
+              marketName: "test"
+            }
+          ]}
+          renderItem={({item}) => <MarketDetailParticipantSeller/>}
+          />
+
     </ScrollView>
   );
 }
