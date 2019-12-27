@@ -32,7 +32,7 @@ class MarketList extends Component {
                 <View>
                     <Text style={{fontSize: 30, margin: 10, marginTop: 50, marginBottom: 20, fontWeight: '700'}}>Market</Text>
                 </View>
-                <SearchBar lightTheme="true"/>
+                <SearchBar lightTheme="true" showCancel="true" round="true"/>
                 <FlatList
                     data={this.state.dataSource}
                     renderItem={({item}) =>
