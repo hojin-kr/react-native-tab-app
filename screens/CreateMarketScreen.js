@@ -25,8 +25,20 @@ export default class CreateMarket extends Component {
                     "favorite": "fff",
                     "host" : "hostId"
                 }),
-            });
-            alert("call create market");
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    if (responseJson === true){
+                        alert("Success Create Market!");
+                    } else {
+                        alert("Fail Create Market!");
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Error Create Market!");
+                });
+
         }
     return (
         <View style={{padding: 10}}>
@@ -35,10 +47,8 @@ export default class CreateMarket extends Component {
             <TextInput style={{height: 30, fontSize: 20, marginBottom: 10, marginTop: 10}} placeholder="name" onChangeText={(name) => this.setState({name})} value={this.state.name}/>
             <Text style={{fontSize: 20 }}>description</Text>
             <TextInput style={{height: 30, fontSize: 20, marginBottom: 10, marginTop: 10}} placeholder="description" onChangeText={(description) => this.setState({description})} value={this.state.description}/>
-            <Text>{this.state.name}{this.state.description}</Text>
             <Button
                 onPress={() => {
-                    alert('Sending for Create Market!');
                     createMarket(this.state.name, this.state.description);
                 }}
                 title="Sending"
