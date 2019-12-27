@@ -5,33 +5,32 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import MarketScreen from '../screens/MarketScreen';
 import CreateMarketScreen from '../screens/CreateMarketScreen';
 
-//common config
-const config = Platform.select({
-    web: {headerMode: 'screen'},
-    default: {},
-});
-
 //Market Screen
 const MarketStack = createStackNavigator(
     {
         Market: MarketScreen,
     },
-    config
+    {headerMode: 'none'}
 );
 
 MarketStack.navigationOptions = {
     tabBarLabel: 'Market',
+    headerShown: false,
 };
 
 //Market Open Screen
 const CreateMarketStack = createStackNavigator(
     {
         CreateMarket: CreateMarketScreen,
+    },
+    {
+        headerMode: 'float',
     }
 );
 
 CreateMarketStack.navigationOptions = {
     tabBarLabel: 'Create',
+    headerShown: false,
 };
 
 //tab list
