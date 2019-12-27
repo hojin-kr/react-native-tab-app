@@ -12,7 +12,7 @@ class MarketList extends Component {
         this.state = {isLoading: true}
     }
     componentDidMount() {
-        return fetch('http://15.165.91.254:3000/sample-market')
+        return fetch('http://15.165.91.254:3000/market')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
