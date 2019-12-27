@@ -2,99 +2,42 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
+import MarketScreen from '../screens/MarketScreen';
+import CreateMarketScreen from '../screens/CreateMarketScreen';
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import NewScreen from '../screens/NewScreen';
-import TestScreen from '../screens/TestScreen';
-
+//common config
 const config = Platform.select({
     web: {headerMode: 'screen'},
     default: {},
 });
 
-const HomeStack = createStackNavigator(
+//Market Screen
+const MarketStack = createStackNavigator(
     {
-        Home: HomeScreen,
+        Market: MarketScreen,
     },
     config
 );
 
-HomeStack.navigationOptions = {
-    tabBarLabel: 'Home',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon
-            focused={focused}
-            name={
-                Platform.OS === 'ios'
-                    ? `ios-information-circle${focused ? '' : '-outline'}`
-                    : 'md-information-circle'
-            }
-        />
-    ),
+MarketStack.navigationOptions = {
+    tabBarLabel: 'Market',
 };
 
-HomeStack.path = '';
-
-const NewStack = createStackNavigator(
+//Market Open Screen
+const CreateMarketStack = createStackNavigator(
     {
-        New: NewScreen,
-    },
-    config
+        CreateMarket: CreateMarketScreen,
+    }
 );
 
-NewStack.navigationOptions = {
-    tabBarLabel: 'New',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}/>
-    ),
+CreateMarketStack.navigationOptions = {
+    tabBarLabel: 'Create',
 };
 
-NewStack.path = '';
-
-const LinksStack = createStackNavigator(
-    {
-        Links: LinksScreen,
-    },
-    config
-);
-
-LinksStack.navigationOptions = {
-    tabBarLabel: 'Links',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}/>
-    ),
-};
-
-LinksStack.path = '';
-
-const SettingsStack = createStackNavigator(
-    {
-        Settings: SettingsScreen,
-    },
-    config
-);
-
-
-
-const TestStack = createStackNavigator(
-    {
-        Test: TestScreen,
-    },
-    config
-);
-
+//tab list
 const tabNavigator = createBottomTabNavigator({
-    HomeStack,
-    NewStack,
-    LinksStack,
-    SettingsStack,
-    TestStack,
+    MarketStack,
+    CreateMarketStack,
 });
-
-tabNavigator.path = '';
-
 
 export default tabNavigator;
