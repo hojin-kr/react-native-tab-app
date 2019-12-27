@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import NewScreen from '../screens/NewScreen';
+import TestScreen from '../screens/TestScreen';
 
 const config = Platform.select({
     web: {headerMode: 'screen'},
@@ -61,7 +62,7 @@ const LinksStack = createStackNavigator(
 );
 
 LinksStack.navigationOptions = {
-    tabBarLabel: 'Links2',
+    tabBarLabel: 'Links',
     tabBarIcon: ({focused}) => (
         <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}/>
     ),
@@ -76,21 +77,21 @@ const SettingsStack = createStackNavigator(
     config
 );
 
-SettingsStack.navigationOptions = {
-    tabBarLabel: 'Settings',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}/>
-    ),
-};
 
-SettingsStack.path = '';
+
+const TestStack = createStackNavigator(
+    {
+        Test: TestScreen,
+    },
+    config
+);
 
 const tabNavigator = createBottomTabNavigator({
     HomeStack,
     NewStack,
     LinksStack,
     SettingsStack,
-
+    TestStack,
 });
 
 tabNavigator.path = '';
